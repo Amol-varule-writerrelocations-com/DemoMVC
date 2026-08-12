@@ -14,9 +14,15 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+          
+- name: Restore
+  run: dotnet restore DemoMVC.sln
 
-      - name: Restore
-        run: dotnet restore DemoMVC.sln
+- name: Build
+  run: dotnet build DemoMVC.sln --configuration Release --no-restore
 
-      - name: Build
-        run: dotnet build DemoMVC.sln --configuration Release --no-restore
+- name: Run Tests
+  run: dotnet test DemoMVC.sln --configuration Release --no-build
+
+- name: Publish
+  run: dotnet publish DemoMVC/DemoMVC.csproj -c Release -o publish
