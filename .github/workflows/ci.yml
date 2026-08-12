@@ -1,0 +1,22 @@
+name: Build DemoMVC
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore DemoMVC.sln
+
+      - name: Build
+        run: dotnet build DemoMVC.sln --configuration Release --no-restore
