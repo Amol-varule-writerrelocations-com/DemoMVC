@@ -27,6 +27,7 @@ public class HomeController : Controller
     {
 
         string x = "xyz";
+        var b = x;
         return View();
     }
 
