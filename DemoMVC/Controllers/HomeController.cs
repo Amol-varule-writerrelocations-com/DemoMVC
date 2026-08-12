@@ -25,6 +25,8 @@ public class HomeController : Controller
     }
     public IActionResult test()
     {
+
+        string x = "xyz";
         return View();
     }
 
